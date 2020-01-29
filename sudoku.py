@@ -7,7 +7,7 @@ white = 255, 255, 255
 black = 0, 0, 0
 boardsize = bwidth, bheight = 3, 3
 
-
+#screen to draw everything on
 screen = pygame.display.set_mode(size)
 screen.fill(white)
 
@@ -24,7 +24,7 @@ for x in range(0, width, int(width/bwidth)):
             pygame.draw.line(screen, black, (x,y), (x, y+height), 5)
         elif y > x:
             pygame.draw.line(screen, black, (x,y), (x+width, y), 5)
-            
+
 #game loop
 while 1:
     for event in pygame.event.get():
