@@ -1,13 +1,14 @@
 import sys, pygame
 pygame.init()
+pygame.display.set_caption('Sudoku')
 
 size = width, height = 960, 960
 speed = [2, 2]
 white = 255, 255, 255
 black = 0, 0, 0
 boardsize = bwidth, bheight = 3, 3
-boxwidth = width/bwidth/3
-boxheight = height/bheight/3
+boxwidth = int(width/bwidth/3)
+boxheight = int(height/bheight/3)
 
 #example board data
 board = [
@@ -31,8 +32,8 @@ screen.fill(white)
 myfont = pygame.font.SysFont("monospace", int(width / 10))
 
 #create grid from rectangles
-for x in range(0, width, int(width/(bwidth*3))):
-    for y in range(0, height, int(height/(bheight*3))):
+for x in range(2, width, boxwidth):
+    for y in range(2, height, boxheight):
         rect = pygame.Rect(x, y, width / bwidth, height / bheight)
         pygame.draw.rect(screen, black, rect, 1)
 
@@ -50,11 +51,12 @@ while 1:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
     
+    #draws numbers to screen that aren't 0 in board
     for x in range(bwidth*3):
         for y in range(bheight*3):
             number = str(board[x][y])
             if number != "0":
                 label = myfont.render(number, 1, black)
-                screen.blit(label, (x*boxwidth + boxwidth / 4, y*boxheight + boxheight / 4))
+                screen.blit(label, (x*boxwidth + boxwidth / 4 + width/80, y*boxheight + boxheight / 4))
 
     pygame.display.flip()
