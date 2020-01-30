@@ -14,6 +14,24 @@ board_size = b_height * b_width
 box_width = width // b_width // 3
 box_height = height // b_height // 3
 
+# data for the initial board
+board = [
+    [7,8,0,4,0,0,1,2,0],
+    [6,0,0,0,7,5,0,0,9],
+    [0,0,0,6,0,1,0,7,8],
+    [0,0,7,0,4,0,2,6,0],
+    [0,0,1,0,5,0,9,3,0],
+    [9,0,4,0,6,0,0,0,5],
+    [0,7,0,3,0,0,0,1,2],
+    [1,2,0,0,0,7,4,0,0],
+    [0,4,9,2,0,6,0,0,7]
+]
+
+# screen to draw everything on
+screen = pygame.display.set_mode(size)
+screen.fill(white)
+myfont = pygame.font.SysFont("monospace", int(width / 10))
+
 def solve(board):
 
     solved = find_empty(board) # returns True when board has no zeros
@@ -71,24 +89,6 @@ def find_empty(board):
                 return (i, j)
     return None
 
-# example board data
-board = [
-    [7,8,0,4,0,0,1,2,0],
-    [6,0,0,0,7,5,0,0,9],
-    [0,0,0,6,0,1,0,7,8],
-    [0,0,7,0,4,0,2,6,0],
-    [0,0,1,0,5,0,9,3,0],
-    [9,0,4,0,6,0,0,0,5],
-    [0,7,0,3,0,0,0,1,2],
-    [1,2,0,0,0,7,4,0,0],
-    [0,4,9,2,0,6,0,0,7]
-]
-
-# screen to draw everything on
-screen = pygame.display.set_mode(size)
-screen.fill(white)
-
-myfont = pygame.font.SysFont("monospace", int(width / 10))
 
 def draw_grid():
 
